@@ -11,9 +11,9 @@
 	}
 </script>
 
-<div class="card shadow-xl">
+<div class="card m-8 shadow-xl">
 	<div class="card-body">
-		<h1 class="card-title">Conversation with {data.customer.name}</h1>
+		<h1 class="card-title mb-2">Conversation with {data.customer.name}</h1>
 
 		{#each data.conversation as message}
 			<div class={`${message.sender === 'customer' ? 'chat chat-start' : 'chat chat-end'}`}>

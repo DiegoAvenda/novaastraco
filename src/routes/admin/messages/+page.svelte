@@ -3,7 +3,7 @@
 </script>
 
 <div class="prose">
-	<h1>Pending conversations</h1>
+	<h2>Pending conversations</h2>
 </div>
 
 <table class="table m-2">

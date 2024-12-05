@@ -1,7 +1,6 @@
 <script>
 	import { page } from '$app/stores';
 	import Bag from '$lib/components/bag.svelte';
-	import MessageIcon from './message-icon.svelte';
 	import { cart } from '$lib/utils/cart.svelte.js';
 	import { onMount } from 'svelte';
 
@@ -52,8 +51,6 @@
 	if (customerLastMessageFrom === 'customer') {
 		noMessageFromAdmin();
 	}
-
-	let route = !username ? '/login' : admin ? '/admin' : '/profile';
 </script>
 
 <header class="lg:pt-22 border-b p-4">
@@ -73,9 +70,20 @@
 			>
 		</div>
 		<div class="ml-auto flex items-center gap-2 lg:mr-20">
-			<MessageIcon href={route} unAnsweredMessage={adminUnansweredCount} />
-			<a href={route}><img class="w-5" src="/profile.svg" alt="profile" /></a>
-			<button class="relative ml-2" onclick={toggleButtonBag}
+			{#if admin}
+				<div class="indicator">
+					<a href="/admin/messages"><img class="w-5" src="/message.svg" alt="profile" /></a>
+					<span class="badge indicator-item badge-xs">{adminUnansweredCount}</span>
+				</div>
+				<a href="/admin"><img class="mx-2 w-5" src="/profile.svg" alt="profile" /></a>
+			{:else}
+				<div class="indicator">
+					<a href="/profile/message"><img class="w-5" src="/message.svg" alt="profile" /></a>
+					<span class="badge indicator-item badge-xs">{messageFromAdmin.count}</span>
+				</div>
+				<a href="/profile"><img class="mx-2 w-5" src="/profile.svg" alt="profile" /></a>
+			{/if}
+			<button class="relative" onclick={toggleButtonBag}
 				><img class="w-5" src="/shopping-bag.svg" alt="shopping bag icon" />
 				{#if cart.length !== 0}
 					<span class="absolute inset-0 ml-3 object-right-top">
