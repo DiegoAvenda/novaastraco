@@ -10,7 +10,7 @@ export const load = async ({ locals }) => {
 		const mongoClient = await client.connect();
 		const db = mongoClient.db('chili');
 		const ordersCollection = db.collection('orders');
-		const query = { paymentCompleted: true, delivered: false };
+		const query = { paymentCompleted: true, delivered: true };
 		const options = { sort: { createdAt: 1 } };
 
 		const rawOrders = await ordersCollection.find(query, options).toArray();
@@ -25,6 +25,13 @@ export const load = async ({ locals }) => {
 				minute: '2-digit',
 				hour12: false
 			}),
+			deliveredAt: order.deliveredAt.toLocaleTimeString('en-US', {
+				day: '2-digit',
+				month: '2-digit',
+				hour: '2-digit',
+				minute: '2-digit',
+				hour12: false
+			}),
 			items: order.items.map((item) => ({
 				...item,
 				reading: item.reading ? item.reading.toString('base64') : null
@@ -32,9 +39,7 @@ export const load = async ({ locals }) => {
 		}));
 
 		return {
-			orders,
-			userPicture: locals.user.picture,
-			username: locals.user.name
+			orders
 		};
 	} catch (e) {
 		console.log(e);

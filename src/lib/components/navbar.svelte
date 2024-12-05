@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/stores';
-	import Bag from '$lib/components/ui/navbar/bag.svelte';
-	import { enhance } from '$app/forms';
+	import Bag from '$lib/components/bag.svelte';
+	import MessageIcon from './message-icon.svelte';
 	import { cart } from '$lib/utils/cart.svelte.js';
 	import { onMount } from 'svelte';
 
@@ -28,6 +28,31 @@
 			}
 		};
 	}
+
+	let adminUnansweredCount = $state(0);
+	if (admin) {
+		onMount(async () => {
+			try {
+				const response = await fetch('/api/unanswered-count');
+				if (response.ok) {
+					adminUnansweredCount = parseInt(await response.text(), 10);
+				} else {
+					console.error('Failed to fetch unanswered messages count');
+				}
+			} catch (err) {
+				console.error('Error fetching unanswered messages:', err);
+			}
+		});
+	}
+
+	if (customerLastMessageFrom === 'vendor') {
+		newMessageFromAdmin();
+	}
+
+	if (customerLastMessageFrom === 'customer') {
+		noMessageFromAdmin();
+	}
+
 	let route = !username ? '/login' : admin ? '/admin' : '/profile';
 </script>
 
@@ -38,14 +63,21 @@
 			onclick={toggleButton}
 			class="burger aspect-square w-5 bg-center bg-no-repeat xl:hidden"
 		></button>
-		<div class="absolute inset-0 flex h-full items-center justify-center">
-			<a href="/"><h1 class="text-xl font-bold tracking-widest lg:text-4xl">NOVAASTRACO</h1></a>
+		<div
+			class="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform items-center justify-center"
+		>
+			<a href="/"
+				><h1 class="pointer-events-auto text-xl font-bold tracking-widest lg:text-4xl">
+					NOVAASTRACO
+				</h1></a
+			>
 		</div>
 		<div class="ml-auto flex items-center gap-2 lg:mr-20">
-			<a href="/admin"><img class="w-5" src="/profile.svg" alt="profile" /></a>
+			<MessageIcon href={route} unAnsweredMessage={adminUnansweredCount} />
+			<a href={route}><img class="w-5" src="/profile.svg" alt="profile" /></a>
 			<button class="relative ml-2" onclick={toggleButtonBag}
 				><img class="w-5" src="/shopping-bag.svg" alt="shopping bag icon" />
-				{#if cart?.length !== 0}
+				{#if cart.length !== 0}
 					<span class="absolute inset-0 ml-3 object-right-top">
 						<div
 							class="inline-flex items-center rounded-full border-2 border-white bg-black px-1.5 py-0.5 text-xs font-semibold leading-4 text-white"
@@ -68,9 +100,12 @@
 		<ul class="font-semibold">
 			<li><a href="/tarot" class:selected={$page.url.pathname === '/tarot'}>TAROT</a></li>
 			<li>
-				<a href="/tarot/10" class:selected={$page.url.pathname === '/tarot/birth-chart'}
+				<a href="/tarot/birth-chart" class:selected={$page.url.pathname === '/tarot/birth-chart'}
 					>ASTROLOGY</a
 				>
+			</li>
+			<li>
+				<a class="mr-8" href="/blog" class:selected={$page.url.pathname === '/blog'}>BLOG</a>
 			</li>
 			<li>
 				<a href="/about" class:selected={$page.url.pathname === '/about'}>ABOUT NOVAASTRACO</a>

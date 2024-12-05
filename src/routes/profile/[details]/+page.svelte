@@ -1,8 +1,4 @@
 <script>
-	import Card from './(components)/card.svelte';
-	import * as Cardi from '$lib/components/ui/card/index.js';
-	import * as Form from '$lib/components/ui/form/index.js';
-
 	let { data, form } = $props();
 
 	const order = data.order;
@@ -19,21 +15,19 @@
 	</div>
 
 	<div class="m-4">
-		<Cardi.Root>
-			<Cardi.Header>
-				<Cardi.Title>Total price: ${order.totalPrice}</Cardi.Title>
-			</Cardi.Header>
-			<Cardi.Content>
-				{#each order.items as item}
-					<Card {order} {item} />
-				{/each}
-			</Cardi.Content>
-			<Cardi.Footer>
-				<p>Created at: {order.createdAt}</p>
-				{#if order.delivered}
-					Delivered at: {order.deliveredAt}
-				{/if}
-			</Cardi.Footer>
-		</Cardi.Root>
+		<p>${order.totalPrice}</p>
+		{#each order.items as item}
+			<p>{item.name}</p>
+			<p>{item.personalization}</p>
+
+			{#if order.delivered}
+				<img class="w-20" src="data:image/jpeg;base64,{item.reading}" alt="Reading" />
+			{/if}
+		{/each}
+
+		Created at: {order.createdAt}
+		{#if order.delivered}
+			Delivered at: {order.deliveredAt}
+		{/if}
 	</div>
 </div>

@@ -1,12 +1,10 @@
 <script>
-	import Dashboard_01 from './(components)/dashboard-01.svelte';
+	import Orders from './orders.svelte';
 
-	let { data, form } = $props();
+	let { data } = $props();
 </script>
 
-<Dashboard_01
-	deliveredOrders={data.deliveredOrders}
-	pendingOrders={data.pendingOrders}
-	userPicture={data.userPicture}
-	username={data.username}
-/>
+<div class="prose mt-2 flex justify-center">
+	<h1>Pending orders</h1>
+</div>
+<Orders orders={data.orders} />

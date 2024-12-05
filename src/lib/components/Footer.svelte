@@ -1,18 +1,8 @@
-<footer class="bg-black pt-14">
+<footer class="bg-black pt-8">
 	<p class="mb-6 text-center text-3xl font-bold text-white">NOVAASTRACO</p>
 	<div class="text-white lg:text-center">
 		<div class="mx-6 py-10 md:text-left">
-			<div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-				<div>
-					<h3 class="flex items-center font-semibold uppercase">News Letter</h3>
-					<p class="my-4">Subscribe to receive news from NOVAASTRACO</p>
-					<input
-						class="border-b placeholder-black"
-						type="email"
-						placeholder="Enter your email address"
-					/>
-					<button>OK</button>
-				</div>
+			<div class="grid-1 grid justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-3">
 				<div class="text-white">
 					<h3 class="mb-4 flex font-semibold uppercase">EXPLORE NOVASTRACOO.COM</h3>
 					<p class="mb-4">

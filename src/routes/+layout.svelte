@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
-	import Navbar from '../lib/components/ui/navbar/navbar.svelte';
-	import Footer from '../lib/components/Footer.svelte';
+	import Navbar from '../lib/components/navbar.svelte';
+	import Footer from '../lib/components/footer.svelte';
 
 	let { data, children } = $props();
 </script>
@@ -15,5 +15,7 @@
 	username={data.username}
 	admin={data.admin}
 />
+
 {@render children()}
+
 <Footer />

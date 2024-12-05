@@ -6,7 +6,12 @@
 	let personalization = $state('');
 
 	const readingIndex = $page.params.reading;
-	const reading = tarotReadings[readingIndex];
+	const rawReading = tarotReadings[readingIndex];
+	const reading = {
+		name: rawReading.name,
+		price: rawReading.price,
+		image: rawReading.image
+	};
 </script>
 
 <main class="mx-5 sm:mx-16 md:mx-24 lg:mx-32 xl:mx-48">
@@ -37,6 +42,6 @@
 	</div>
 	<div class="flex flex-col items-center">
 		<h3 class="text-xl font-bold">DETAILS</h3>
-		<p class="my-3">{@html reading.details}</p>
+		<p class="my-3">{@html rawReading.details}</p>
 	</div>
 </main>
