@@ -3,7 +3,7 @@ import { ObjectId } from 'mongodb';
 import { redirect } from '@sveltejs/kit';
 
 export const load = async ({ locals, params }) => {
-	if (!locals.user.admin) {
+	if (!locals.user?.admin) {
 		return redirect(302, '/');
 	}
 	const orderId = params.details;

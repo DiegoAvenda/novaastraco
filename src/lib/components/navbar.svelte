@@ -3,6 +3,11 @@
 	import Bag from '$lib/components/bag.svelte';
 	import { cart } from '$lib/utils/cart.svelte.js';
 	import { onMount } from 'svelte';
+	import {
+		messageFromAdmin,
+		newMessageFromAdmin,
+		noMessageFromAdmin
+	} from '$lib/utils/message-from-admin.svelte.js';
 
 	let { username, admin, customerLastMessageFrom } = $props();
 
@@ -70,19 +75,53 @@
 			>
 		</div>
 		<div class="ml-auto flex items-center gap-2 lg:mr-20">
+			<!-- todo improve if else logic -->
+
 			{#if admin}
 				<div class="indicator">
 					<a href="/admin/messages"><img class="w-5" src="/message.svg" alt="profile" /></a>
 					<span class="badge indicator-item badge-xs">{adminUnansweredCount}</span>
 				</div>
-				<a href="/admin"><img class="mx-2 w-5" src="/profile.svg" alt="profile" /></a>
 			{:else}
 				<div class="indicator">
 					<a href="/profile/message"><img class="w-5" src="/message.svg" alt="profile" /></a>
 					<span class="badge indicator-item badge-xs">{messageFromAdmin.count}</span>
 				</div>
-				<a href="/profile"><img class="mx-2 w-5" src="/profile.svg" alt="profile" /></a>
 			{/if}
+			<div class="dropdown dropdown-end mx-2">
+				<div tabindex="0" role="button">
+					<div class="w-5">
+						<img alt="profile" src="/profile.svg" />
+					</div>
+				</div>
+				<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+				<ul
+					tabindex="0"
+					class="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
+				>
+					<li>
+						{#if admin}
+							<a href="/admin" class="justify-between"> Admin pending orders </a>
+							<a href="/admin/delivered" class="justify-between"> Admin delivered orders </a>
+						{:else}
+							<a href="/profile" class="justify-between">
+								Pending orders
+								<span class="badge">New</span>
+							</a>
+							<a href="/profile/delivered" class="justify-between"> Delivered orders </a>
+						{/if}
+					</li>
+					{#if !username}
+						<li><a href="/api/oauth/google">Login</a></li>
+					{:else}
+						<li>
+							<form method="post" use:enhance action="/?/signOut">
+								<button>Logout</button>
+							</form>
+						</li>
+					{/if}
+				</ul>
+			</div>
 			<button class="relative" onclick={toggleButtonBag}
 				><img class="w-5" src="/shopping-bag.svg" alt="shopping bag icon" />
 				{#if cart.length !== 0}
