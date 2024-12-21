@@ -36,7 +36,7 @@ export const load = async ({ locals, params }) => {
 			_id: rawOrder._id.toString(),
 			items: rawOrder.items.map((item) => ({
 				...item,
-				reading: item.reading ? item.reading.toString('base64') : null // Convierte solo si reading existe
+				reading: item.reading ? item.reading.toString('base64') : null
 			}))
 		};
 

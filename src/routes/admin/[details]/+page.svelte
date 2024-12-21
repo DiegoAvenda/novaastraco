@@ -6,77 +6,100 @@
 </script>
 
 <div class="m-8 flex flex-col items-center">
-	<div class="prose">
+	<div class="text-center">
 		{#if order.delivered}
-			<h1>Delivered order</h1>
+			<h1 class="text-2xl font-bold text-gray-800">Delivered Order</h1>
 		{:else}
-			<h1>Pending order</h1>
+			<h1 class="text-2xl font-bold text-gray-800">Pending Order</h1>
 		{/if}
 	</div>
 
-	<div class="m-8">
-		<div class="prose">
-			<h2>{order.customerName}</h2>
-			<h3>Total price: ${order.totalPrice}</h3>
+	<div class="mt-8 w-full max-w-3xl">
+		<div class="mb-6">
+			<h2 class="text-lg font-semibold text-gray-700">{order.customerName}</h2>
+			<h3 class="text-gray-600">
+				Total Price: <span class="font-medium">${order.totalPrice}</span>
+			</h3>
 		</div>
-		<div class="flex flex-col gap-2">
+		<div class="space-y-4">
 			{#each order.items as item}
-				<div class="card w-96 bg-base-100 shadow-xl">
-					<div class="card-body">
-						<h4 class="card-title">{item.name}</h4>
-						<p>{item.personalization}</p>
+				<div class="rounded-md border border-gray-300 p-4 shadow-sm">
+					<div class="flex flex-col">
+						<h4 class="font-semibold text-gray-800">{item.name}</h4>
+						<p class="text-sm text-gray-600">{item.personalization}</p>
 						{#if item.reading}
-							<figure>
-								<img src="data:image/jpeg;base64,{item.reading}" alt={item.name} />
+							<figure class="mt-4">
+								<img
+									src="data:image/jpeg;base64,{item.reading}"
+									alt={item.name}
+									class="rounded-md"
+								/>
 							</figure>
 						{/if}
-						{#if !order.delivered}
-							<div class="card-actions mt-2">
-								<form action="?/uploadFile" method="post" enctype="multipart/form-data">
-									<input type="hidden" name="orderId" value={order._id} />
-									<input type="hidden" name="readingId" value={item.readingId} />
-
-									<input class="mb-4" type="file" name="file" />
-									<div class="flex justify-end">
-										{#if item.reading}
-											<button class="btn btn-primary"> Edit reading</button>
-										{:else}
-											<button class="btn btn-primary">Ready</button>
-										{/if}
-									</div>
-								</form>
-							</div>
-						{/if}
 					</div>
+					{#if !order.delivered}
+						<div class="mt-4">
+							<form
+								action="?/uploadFile"
+								method="post"
+								enctype="multipart/form-data"
+								class="space-y-2"
+							>
+								<input type="hidden" name="orderId" value={order._id} />
+								<input type="hidden" name="readingId" value={item.readingId} />
+								<input
+									type="file"
+									name="file"
+									class="block w-full text-sm text-gray-600 file:mr-4 file:rounded-md file:border file:border-gray-300 file:bg-gray-50 file:px-4 file:py-2 file:text-sm file:font-semibold hover:file:bg-gray-100"
+								/>
+								<div class="text-right">
+									<button
+										class="rounded-md bg-gray-800 px-4 py-2 text-sm text-white hover:bg-gray-700"
+									>
+										{#if item.reading}
+											Edit Reading
+										{:else}
+											Ready
+										{/if}
+									</button>
+								</div>
+							</form>
+						</div>
+					{/if}
 				</div>
 			{/each}
 		</div>
 		{#if !order.delivered}
 			{#if order.items.every((item) => item.reading !== null && item.reading !== undefined)}
-				<button onclick={() => (toggle = !toggle)} class="btn btn-primary mt-4 w-96">Deliver</button
+				<button
+					onclick={() => (toggle = !toggle)}
+					class="mt-8 w-full rounded-md bg-gray-800 py-3 text-sm text-white hover:bg-gray-700"
+					>Deliver</button
 				>
 
 				{#if toggle}
-					<div class="card w-96">
-						<div class="card-body items-center text-center">
-							<h2 class="card-title">Are you sure?</h2>
-							<div class="card-actions justify-end">
-								<form action="?/deliverReading" method="post">
-									<input type="hidden" name="orderId" value={order._id} />
-									<button class=" btn-align btn btn-primary">Yes</button>
-								</form>
-								<button class="btn btn-primary" onclick={() => (toggle = !toggle)}>No</button>
-							</div>
+					<div class="mt-4 rounded-md border border-gray-300 bg-white p-6 shadow-md">
+						<h2 class="text-center text-lg font-semibold text-gray-800">Are you sure?</h2>
+						<div class="mt-4 flex justify-between">
+							<form action="?/deliverReading" method="post">
+								<input type="hidden" name="orderId" value={order._id} />
+								<button
+									class="rounded-md bg-gray-800 px-4 py-2 text-sm text-white hover:bg-gray-700"
+									>Yes</button
+								>
+							</form>
+							<button
+								class="rounded-md bg-gray-200 px-4 py-2 text-sm text-gray-800 hover:bg-gray-300"
+								onclick={() => (toggle = !toggle)}>No</button
+							>
 						</div>
 					</div>
 				{/if}
 			{/if}
 		{:else}
-			<div class="mt-8 flex flex-col items-center">
-				<div class="mt-2 flex flex-col items-center font-bold">
-					<p>Created at: {order.createdAt}</p>
-					<p>Delivered at: {order.deliveredAt}</p>
-				</div>
+			<div class="mt-8 text-center">
+				<p class="text-sm font-medium text-gray-600">Created at: {order.createdAt}</p>
+				<p class="text-sm font-medium text-gray-600">Delivered at: {order.deliveredAt}</p>
 			</div>
 		{/if}
 	</div>

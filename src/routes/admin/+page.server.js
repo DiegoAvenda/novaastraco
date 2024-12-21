@@ -11,7 +11,7 @@ export const load = async ({ locals }) => {
 		const db = mongoClient.db('chili');
 		const ordersCollection = db.collection('orders');
 		const query = { paymentCompleted: true, delivered: false };
-		const options = { sort: { createdAt: 1 } };
+		const options = { sort: { createdAt: -1 } };
 
 		const rawOrders = await ordersCollection.find(query, options).toArray();
 

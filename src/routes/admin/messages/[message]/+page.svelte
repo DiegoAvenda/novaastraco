@@ -11,24 +11,36 @@
 	}
 </script>
 
-<div class="card m-8 shadow-xl">
-	<div class="card-body">
-		<h1 class="card-title mb-2">Conversation with {data.customer.name}</h1>
+<div class="m-8 mx-auto max-w-2xl bg-white p-8 text-black shadow-lg">
+	<div class="mb-6">
+		<h1 class="mb-4 text-2xl font-semibold tracking-wide">
+			Conversation with {data.customer.name}
+		</h1>
 
 		{#each data.conversation as message}
-			<div class={`${message.sender === 'customer' ? 'chat chat-start' : 'chat chat-end'}`}>
-				<div class="chat-bubble">
+			<div class={`flex ${message.sender === 'customer' ? 'justify-start' : 'justify-end'} mb-4`}>
+				<div class="max-w-xs rounded-lg bg-gray-100 px-4 py-2 text-black">
 					{message.content}
 				</div>
 			</div>
 		{/each}
-
-		<form method="post">
-			<input type="hidden" name="customerId" value={customerId} />
-			<div class="mt-4 flex gap-2">
-				<input class="input input-bordered w-screen" type="text" name="message" />
-				<button class="btn btn-primary">Send</button>
-			</div>
-		</form>
 	</div>
+
+	<form method="post" class="mt-6">
+		<input type="hidden" name="customerId" value={customerId} />
+		<div class="flex gap-2">
+			<input
+				class="flex-grow rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+				type="text"
+				name="message"
+				placeholder="Type a message..."
+			/>
+			<button
+				class="rounded-lg bg-black px-6 py-2 text-white transition-colors hover:bg-gray-800"
+				type="submit"
+			>
+				Send
+			</button>
+		</div>
+	</form>
 </div>

@@ -56,6 +56,11 @@
 	if (customerLastMessageFrom === 'customer') {
 		noMessageFromAdmin();
 	}
+
+	let route = $state('/login');
+	if (username) {
+		route = admin ? '/admin' : '/profile';
+	}
 </script>
 
 <header class="lg:pt-22 border-b p-4">
@@ -74,64 +79,42 @@
 				</h1></a
 			>
 		</div>
-		<div class="ml-auto flex items-center gap-2 lg:mr-20">
-			<!-- todo improve if else logic -->
-
-			{#if admin}
-				<div class="indicator">
-					<a href="/admin/messages"><img class="w-5" src="/message.svg" alt="profile" /></a>
-					<span class="badge indicator-item badge-xs">{adminUnansweredCount}</span>
-				</div>
-			{:else}
-				<div class="indicator">
-					<a href="/profile/message"><img class="w-5" src="/message.svg" alt="profile" /></a>
-					<span class="badge indicator-item badge-xs">{messageFromAdmin.count}</span>
-				</div>
-			{/if}
-			<div class="dropdown dropdown-end mx-2">
-				<div tabindex="0" role="button">
-					<div class="w-5">
-						<img alt="profile" src="/profile.svg" />
-					</div>
-				</div>
-				<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-				<ul
-					tabindex="0"
-					class="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
-				>
-					<li>
-						{#if admin}
-							<a href="/admin" class="justify-between"> Admin pending orders </a>
-							<a href="/admin/delivered" class="justify-between"> Admin delivered orders </a>
-						{:else}
-							<a href="/profile" class="justify-between">
-								Pending orders
-								<span class="badge">New</span>
-							</a>
-							<a href="/profile/delivered" class="justify-between"> Delivered orders </a>
-						{/if}
-					</li>
-					{#if !username}
-						<li><a href="/api/oauth/google">Login</a></li>
-					{:else}
-						<li>
-							<form method="post" use:enhance action="/?/signOut">
-								<button>Logout</button>
-							</form>
-						</li>
-					{/if}
-				</ul>
-			</div>
-			<button class="relative" onclick={toggleButtonBag}
-				><img class="w-5" src="/shopping-bag.svg" alt="shopping bag icon" />
-				{#if cart.length !== 0}
-					<span class="absolute inset-0 ml-3 object-right-top">
-						<div
-							class="inline-flex items-center rounded-full border-2 border-white bg-black px-1.5 py-0.5 text-xs font-semibold leading-4 text-white"
+		<div class="ml-auto flex items-center gap-4 lg:mr-20">
+			{#if username}
+				{#if admin}
+					<a href="/admin/messages" class="relative">
+						<img class="w-5" src="/message.svg" alt="messages" />
+						<span
+							class="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black text-xs text-white"
 						>
-							{cart?.length}
-						</div>
-					</span>
+							{adminUnansweredCount}
+						</span>
+					</a>
+				{:else}
+					<a href="/profile/messages" class="relative">
+						<img class="w-5" src="/message.svg" alt="messages" />
+						<span
+							class="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black text-xs text-white"
+						>
+							{messageFromAdmin.count}
+						</span>
+					</a>
+				{/if}
+			{:else}
+				<a href="/login" class="relative">
+					<img class="w-5" src="/message.svg" alt="messages" />
+				</a>
+			{/if}
+
+			<a href={route}> <img class="w-5" src="/profile.svg" alt="profile" /></a>
+
+			<button class="relative" onclick={toggleButtonBag}>
+				<img class="w-5" src="/shopping-bag.svg" alt="shopping bag icon" />
+				{#if cart.length > 0}
+					<span
+						class="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black text-xs text-white"
+						>{cart.length}</span
+					>
 				{/if}
 			</button>
 		</div>

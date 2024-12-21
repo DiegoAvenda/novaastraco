@@ -68,7 +68,6 @@ export const POST = async ({ request }) => {
 		const isSignatureValid = await verifySignature(event, headers);
 		if (isSignatureValid) {
 			//console.log('Signature is valid.');
-			// Procesa el webhook (ej. guardar en base de datos)
 			//console.log(`Received event:`, JSON.stringify(data, null, 2));
 
 			const orderId = data.resource.custom_id;
