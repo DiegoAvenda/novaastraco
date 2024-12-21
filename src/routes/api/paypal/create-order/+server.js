@@ -1,5 +1,5 @@
 import { json, error } from '@sveltejs/kit';
-import { get_access_token, endpoint_url } from '../../../../lib/server/paypal.js';
+import { get_access_token, endpoint_url } from '$lib/server/paypal.js';
 import client from '$lib/server/db.js';
 
 export async function POST({ request, locals }) {
