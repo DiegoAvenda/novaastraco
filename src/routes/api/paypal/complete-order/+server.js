@@ -1,4 +1,4 @@
-import { get_access_token, endpoint_url } from '$ib/server/paypal.js';
+import { get_access_token, endpoint_url } from '$lib/server/paypal.js';
 import { json, error } from '@sveltejs/kit';
 
 export async function POST({ request }) {
