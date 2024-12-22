@@ -26,7 +26,7 @@
 				<div class="rounded-md border border-gray-300 p-4 shadow-sm">
 					<div class="flex flex-col">
 						<h4 class="font-semibold text-gray-800">{item.name}</h4>
-						<p class="text-sm text-gray-600">{item.personalization}</p>
+						<p class="text-sm text-gray-600">Personalization: {item.personalization}</p>
 						{#if item.reading}
 							<figure class="mt-4">
 								<img
