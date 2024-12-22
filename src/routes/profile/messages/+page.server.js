@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import client from '$lib/server/db.js';
-import { notifUser } from '$lib/server/db/subscriptionDb';
+import { notifUser } from '$lib/server/push-subscription';
 
 const adminGoogleId = '100935988500638449773';
 
