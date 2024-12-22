@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
 	import Navbar from '../lib/components/navbar.svelte';
-	import Footer from '../lib/components/footer.svelte';
+	import Footer from '../lib/components/Footer.svelte';
 
 	let { data, children } = $props();
 </script>
