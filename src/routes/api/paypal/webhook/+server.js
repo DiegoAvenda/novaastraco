@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import crypto from 'crypto';
 import client from '$lib/server/db.js';
 import { ObjectId } from 'mongodb';
-import { notifUser } from '$lib/server/db/subscriptionDb';
+import { notifUser } from '$lib/server/push-subscription';
 
 // Variables de configuración
 const CACHE_DIR = '.';
