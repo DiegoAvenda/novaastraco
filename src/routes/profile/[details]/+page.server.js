@@ -3,8 +3,8 @@ import { ObjectId } from 'mongodb';
 import { redirect } from '@sveltejs/kit';
 
 export const load = async ({ locals, params }) => {
-	if (!locals.user?.admin) {
-		return redirect(302, '/');
+	if (!locals.user) {
+		return redirect(302, '/login');
 	}
 	const orderId = params.details;
 	const objectId = new ObjectId(orderId);
@@ -18,9 +18,25 @@ export const load = async ({ locals, params }) => {
 		const order = {
 			...rawOrder,
 			_id: rawOrder._id.toString(),
+			createdAt: rawOrder.createdAt.toLocaleTimeString('en-US', {
+				day: '2-digit',
+				month: '2-digit',
+				hour: '2-digit',
+				minute: '2-digit',
+				hour12: false
+			}),
+			deliveredAt: rawOrder.deliveredAt
+				? rawOrder.deliveredAt.toLocaleTimeString('en-US', {
+						day: '2-digit',
+						month: '2-digit',
+						hour: '2-digit',
+						minute: '2-digit',
+						hour12: false
+					})
+				: null,
 			items: rawOrder.items.map((item) => ({
 				...item,
-				reading: item.reading ? item.reading.toString('base64') : null // Convierte solo si reading existe
+				reading: item.reading ? item.reading.toString('base64') : null
 			}))
 		};
 

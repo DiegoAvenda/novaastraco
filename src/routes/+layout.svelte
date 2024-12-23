@@ -10,12 +10,14 @@
 	<title>NOVAASTRACO Official website: Tarot & Astrology</title>
 </svelte:head>
 
-<Navbar
-	customerLastMessageFrom={data.customerLastMessageFrom}
-	username={data.username}
-	admin={data.admin}
-/>
-
-{@render children()}
-
-<Footer />
+<div class="flex min-h-screen flex-col">
+	<Navbar
+		customerLastMessageFrom={data.customerLastMessageFrom}
+		username={data.username}
+		admin={data.admin}
+	/>
+	<div class="grow">
+		{@render children()}
+	</div>
+	<Footer />
+</div>

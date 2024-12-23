@@ -8,16 +8,16 @@
 <div class="m-8 flex flex-col items-center">
 	<div class="text-center">
 		{#if order.delivered}
-			<h1 class="text-2xl font-bold text-gray-800">Delivered Order</h1>
+			<h1 class="text-2xl font-bold">Delivered Order</h1>
 		{:else}
-			<h1 class="text-2xl font-bold text-gray-800">Pending Order</h1>
+			<h1 class="text-2xl font-bold">Pending Order</h1>
 		{/if}
 	</div>
 
 	<div class="mt-8 w-full max-w-3xl">
 		<div class="mb-6">
-			<h2 class="text-lg font-semibold text-gray-700">{order.customerName}</h2>
-			<h3 class="text-gray-600">
+			<h2 class="text-lg font-semibold">{order.customerName}</h2>
+			<h3>
 				Total Price: <span class="font-medium">${order.totalPrice}</span>
 			</h3>
 		</div>
@@ -25,8 +25,8 @@
 			{#each order.items as item}
 				<div class="rounded-md border border-gray-300 p-4 shadow-sm">
 					<div class="flex flex-col">
-						<h4 class="font-semibold text-gray-800">{item.name}</h4>
-						<p class="text-sm text-gray-600">Personalization: {item.personalization}</p>
+						<h4 class="font-semibold">{item.name}</h4>
+						<p class="text-sm">Personalization: {item.personalization}</p>
 						{#if item.reading}
 							<figure class="mt-4">
 								<img
@@ -50,12 +50,10 @@
 								<input
 									type="file"
 									name="file"
-									class="block w-full text-sm text-gray-600 file:mr-4 file:rounded-md file:border file:border-gray-300 file:bg-gray-50 file:px-4 file:py-2 file:text-sm file:font-semibold hover:file:bg-gray-100"
+									class="block w-full text-sm file:mr-4 file:rounded-md file:border file:border-gray-300 file:bg-gray-50 file:px-4 file:py-2 file:text-sm file:font-semibold hover:file:bg-gray-100"
 								/>
 								<div class="text-right">
-									<button
-										class="rounded-md bg-gray-800 px-4 py-2 text-sm text-white hover:bg-gray-700"
-									>
+									<button class="rounded-md px-4 py-2 text-sm text-white hover:bg-gray-700">
 										{#if item.reading}
 											Edit Reading
 										{:else}
@@ -73,13 +71,13 @@
 			{#if order.items.every((item) => item.reading !== null && item.reading !== undefined)}
 				<button
 					onclick={() => (toggle = !toggle)}
-					class="mt-8 w-full rounded-md bg-gray-800 py-3 text-sm text-white hover:bg-gray-700"
+					class="mt-8 w-full rounded-md bg-black py-3 text-sm text-white hover:bg-gray-700"
 					>Deliver</button
 				>
 
 				{#if toggle}
 					<div class="mt-4 rounded-md border border-gray-300 bg-white p-6 shadow-md">
-						<h2 class="text-center text-lg font-semibold text-gray-800">Are you sure?</h2>
+						<h2 class="text-center text-lg font-semibold">Are you sure?</h2>
 						<div class="mt-4 flex justify-between">
 							<form action="?/deliverReading" method="post">
 								<input type="hidden" name="orderId" value={order._id} />
@@ -89,7 +87,7 @@
 								>
 							</form>
 							<button
-								class="rounded-md bg-gray-200 px-4 py-2 text-sm text-gray-800 hover:bg-gray-300"
+								class="rounded-md bg-gray-200 px-4 py-2 text-sm hover:bg-gray-300"
 								onclick={() => (toggle = !toggle)}>No</button
 							>
 						</div>
@@ -98,8 +96,8 @@
 			{/if}
 		{:else}
 			<div class="mt-8 text-center">
-				<p class="text-sm font-medium text-gray-600">Created at: {order.createdAt}</p>
-				<p class="text-sm font-medium text-gray-600">Delivered at: {order.deliveredAt}</p>
+				<p class="text-sm font-medium">Created at: {order.createdAt}</p>
+				<p class="text-sm font-medium">Delivered at: {order.deliveredAt}</p>
 			</div>
 		{/if}
 	</div>

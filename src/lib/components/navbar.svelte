@@ -84,20 +84,24 @@
 				{#if admin}
 					<a href="/admin/messages" class="relative">
 						<img class="w-5" src="/message.svg" alt="messages" />
-						<span
-							class="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black text-xs text-white"
-						>
-							{adminUnansweredCount}
-						</span>
+						{#if adminUnansweredCount > 0}
+							<span
+								class="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black text-xs text-white"
+							>
+								{adminUnansweredCount}
+							</span>
+						{/if}
 					</a>
 				{:else}
 					<a href="/profile/messages" class="relative">
 						<img class="w-5" src="/message.svg" alt="messages" />
-						<span
-							class="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black text-xs text-white"
-						>
-							{messageFromAdmin.count}
-						</span>
+						{#if messageFromAdmin.count > 0}
+							<span
+								class="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-black text-xs text-white"
+							>
+								{messageFromAdmin.count}
+							</span>
+						{/if}
 					</a>
 				{/if}
 			{:else}

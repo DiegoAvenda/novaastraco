@@ -1,36 +1,34 @@
 <script>
 	import { enhance } from '$app/forms';
 
-	let { username, pendingOrders, deliveredOrders } = $props();
+	let { data } = $props();
+	// const username = data.username
 </script>
 
-<p>Pending orders</p>
+<div class="m-6 flex flex-col items-center gap-4">
+	<h1 class="flex justify-center text-3xl text-black">Pending orders</h1>
 
-{#each pendingOrders as order}
-	<a href={`/profile/${order._id}`}>
-		<div class="font-medium">{order.items.length}</div>
-		<div class="hidden text-sm text-muted-foreground md:inline">
-			Created at: {order.createdAt}
-		</div>
-	</a>
-
-	<p>{order.createdAt}</p>
-	<p>${order.totalPrice}</p>
-{/each}
-{#if pendingOrders.length === 0}
-	You don't have pending orders
-{/if}
-
-<p>Delivered orders</p>
-
-{#each deliveredOrders as order}
-	<a href={`/profile/${order._id}`}>
-		<div class="flex items-center gap-4">
-			<div class="grid gap-1">
-				<p class="text-sm font-medium leading-none">Readings</p>
-				<p class="text-sm text-muted-foreground">{order.items.length}</p>
+	<div class="flex flex-col items-center gap-6 text-center text-black">
+		{#each data.orders as order (order._id)}
+			<div class="w-96 rounded-lg border border-gray-300 bg-white text-black shadow-md">
+				<div class="p-6">
+					<p>
+						Total Price: ${order.totalPrice}
+					</p>
+					{#each order.items as item}
+						<div class="my-4 rounded-lg border border-gray-200 bg-gray-50 shadow-sm">
+							<div class="p-4">
+								<h2 class="text-lg font-medium text-black">{item.name}</h2>
+							</div>
+						</div>
+					{/each}
+					<p>Ordered at {order.createdAt}</p>
+				</div>
 			</div>
-			<div class="ml-auto font-medium">${order.totalPrice}</div>
-		</div>
-	</a>
-{/each}
+		{/each}
+	</div>
+
+	{#if data.orders.length === 0}
+		<p>You don't have pending orders</p>
+	{/if}
+</div>
