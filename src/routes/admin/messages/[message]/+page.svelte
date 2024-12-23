@@ -3,8 +3,6 @@
 
 	let { data, form } = $props();
 	const customerId = data.customerId;
-	const customerPicture = data.customer.picture;
-	const adminPicture = data.adminPicture;
 
 	if (form?.success) {
 		oneMessageFromCustomerLess();

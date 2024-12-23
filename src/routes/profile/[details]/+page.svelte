@@ -5,11 +5,11 @@
 	let toggle = $state(false);
 </script>
 
-<div class="m-8 flex flex-col items-center">
+<div class="m-8 flex flex-col items-center gap-8">
 	<div class="text-center">
 		<h1 class="text-2xl font-bold">Delivered Order</h1>
 	</div>
-	<div class="mt-8 w-full max-w-3xl">
+	<div class="w-full max-w-3xl">
 		<div class="mb-6">
 			<h3>
 				Total Price: <span class="font-medium">${order.totalPrice}</span>
@@ -28,7 +28,7 @@
 				</div>
 			{/each}
 		</div>
-		<div class="mt-8 text-center">
+		<div class="text-center">
 			<p class="text-sm font-medium">Created at: {order.createdAt}</p>
 			<p class="text-sm font-medium">Delivered at: {order.deliveredAt}</p>
 		</div>

@@ -12,36 +12,34 @@
 	}
 </script>
 
-<div class="mx-3.5">
-	<h1>Conversation with Lizzi</h1>
+<div class="m-8 mx-auto max-w-2xl bg-white p-8 text-black shadow-lg">
+	<div class="mb-6">
+		<h1 class="mb-4 text-2xl font-semibold tracking-wide">Conversation with Lizzi</h1>
 
-	{#each data.conversation as message}
-		<div class={`${message.sender === 'customer' ? 'chat chat-start' : 'chat chat-end'}`}>
-			<div class="w-10 rounded-full">
-				<img
-					alt="Tailwind CSS chat bubble component"
-					src={message.sender === 'customer' ? customerPicture : adminPicture}
-				/>
+		{#each data.conversation as message}
+			<div class={`flex ${message.sender === 'customer' ? 'justify-start' : 'justify-end'} mb-4`}>
+				<div class="max-w-xs rounded-lg bg-gray-100 px-4 py-2 text-black">
+					{message.content}
+				</div>
 			</div>
-		</div>
+		{/each}
+	</div>
 
-		{message.sender === 'customer' ? customerName : 'Lizzi'}
-		<time class="text-xs opacity-50"
-			>{message.createdAt.toLocaleTimeString('en-US', {
-				hour: '2-digit',
-				minute: '2-digit',
-				hour12: false
-			})}</time
-		>
-
-		{message.content}
-	{/each}
-
-	<form method="post">
+	<form method="post" class="mt-6">
 		<input type="hidden" name="customerId" value={customerId} />
-		<div class="flex">
-			<input class="w-screen" type="text" name="message" />
-			<button>Send</button>
+		<div class="flex gap-2">
+			<input
+				class="flex-grow rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+				type="text"
+				name="message"
+				placeholder="Type a message..."
+			/>
+			<button
+				class="rounded-lg bg-black px-6 py-2 text-white transition-colors hover:bg-gray-800"
+				type="submit"
+			>
+				Send
+			</button>
 		</div>
 	</form>
 </div>
