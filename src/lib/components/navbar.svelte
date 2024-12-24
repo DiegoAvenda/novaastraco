@@ -134,9 +134,7 @@
 		<ul class="font-semibold">
 			<li><a href="/tarot" class:selected={$page.url.pathname === '/tarot'}>TAROT</a></li>
 			<li>
-				<a href="/tarot/birth-chart" class:selected={$page.url.pathname === '/tarot/birth-chart'}
-					>ASTROLOGY</a
-				>
+				<a href="/tarot/10" class:selected={$page.url.pathname === '/tarot/10'}>ASTROLOGY</a>
 			</li>
 			<li>
 				<a class="mr-8" href="/blog" class:selected={$page.url.pathname === '/blog'}>BLOG</a>
