@@ -24,10 +24,11 @@ export const load = async ({ locals }) => {
 			...order,
 			_id: order._id.toString(),
 			createdAt: order.createdAt.toLocaleTimeString('en-US', {
+				minute: '2-digit',
+				hour: '2-digit',
 				day: '2-digit',
 				month: '2-digit',
-				hour: '2-digit',
-				minute: '2-digit',
+				year: '2-digit',
 				hour12: false
 			})
 		}));
