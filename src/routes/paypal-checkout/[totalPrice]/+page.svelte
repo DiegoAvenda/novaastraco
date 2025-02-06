@@ -57,7 +57,7 @@
 					onApprove: async function (data, actions) {
 						let order_id = data.orderID;
 						console.log('order_id: ', order_id);
-						return fetch('http://localhost:5173/api/paypal/complete-order', {
+						return fetch('/api/paypal/complete-order', {
 							method: 'post',
 							headers: { 'Content-Type': 'application/json; charset=utf-8' },
 							body: JSON.stringify({
@@ -69,10 +69,9 @@
 							.then((order_details) => {
 								console.log('paypal order details: ', order_details); //https://developer.paypal.com/docs/api/orders/v2/#orders_capture!c=201&path=create_time&t=response
 								let intent_object = intent === 'auhtorize' ? 'authorizations' : 'captures';
-								//Custom Successful Message
-								alerts = 'Thank you for your payment :)';
 								//close out the paypal buttons that were rendered
 								paypal_buttons.close();
+								window.location.href = '/profile';
 							});
 					},
 					onCancel: function (data) {
@@ -96,8 +95,10 @@
 	});
 </script>
 
-paypal checkout Total price: ${totalPrice}
-<div id="paypal-container"></div>
+<h1 class="m-6 text-center text-xl">Paypal checkout total price: ${totalPrice}</h1>
+<div class="flex justify-center">
+	<div class="w-96" id="paypal-container"></div>
+</div>
 {#if alerts !== ''}
 	<p>{alerts}</p>
 {/if}
