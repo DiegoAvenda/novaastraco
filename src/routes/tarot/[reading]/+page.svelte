@@ -4,6 +4,8 @@
 	import { page } from '$app/stores';
 
 	let personalization = $state('');
+	let toastVisible = $state(false);
+	let toastMessage = $state('');
 
 	const readingIndex = $page.params.reading;
 	const rawReading = tarotReadings[readingIndex];
@@ -12,6 +14,22 @@
 		price: rawReading.price,
 		image: rawReading.image
 	};
+
+	function handleAddToCart() {
+		const added = addToCart(reading, personalization, readingIndex);
+		toastMessage = added
+			? '1 Reading added to shopping bag'
+			: 'This reading with this personalization already exists in your bag';
+
+		if (added) {
+			personalization = ''; // Limpiar el campo si se agregó exitosamente
+		}
+
+		toastVisible = true;
+		setTimeout(() => {
+			toastVisible = false;
+		}, 3000);
+	}
 </script>
 
 <main class="mx-5 sm:mx-16 md:mx-24 lg:mx-32 xl:mx-48">
@@ -32,10 +50,7 @@
 			/>
 			{#if personalization !== ''}
 				<div class="flex justify-center bg-black p-2">
-					<button
-						onclick={() => addToCart(reading, personalization, readingIndex)}
-						class="text-white">ADD TO BAG</button
-					>
+					<button onclick={handleAddToCart} class="text-white"> ADD TO BAG </button>
 				</div>
 			{/if}
 		</div>
@@ -45,3 +60,9 @@
 		<p class="my-3">{@html rawReading.details}</p>
 	</div>
 </main>
+
+{#if toastVisible}
+	<div class="fixed bottom-4 right-4 rounded-lg bg-black px-4 py-2 text-white shadow-lg">
+		{toastMessage}
+	</div>
+{/if}
