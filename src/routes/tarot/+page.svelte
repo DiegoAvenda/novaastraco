@@ -18,15 +18,16 @@
 		</div>
 	</div>
 </div>
-<p class="mx-6 mb-14 mt-8 text-center sm:mx-28 lg:mx-36">
-	Explore a realm of mystical possibilities as we unveil the ancient art of Tarot readings. Our
-	website offers a diverse range of Tarot spreads, each designed to illuminate your path, answer
-	your questions, and provide clarity to the mysteries that lie ahead. Embark on a journey of
-	self-discovery and empowerment as you delve into the captivating world of Tarot. Discover the
-	wisdom that lies within the cards and uncover the revelations they hold for you. Choose from our
-	selection of Tarot readings and unlock the secrets that await your exploration.
-</p>
-
+<div class="flex justify-center">
+	<p class="mx-7 mb-14 mt-8 w-[530px] text-center">
+		Explore a realm of mystical possibilities as we unveil the ancient art of Tarot readings. Our
+		website offers a diverse range of Tarot spreads, each designed to illuminate your path, answer
+		your questions, and provide clarity to the mysteries that lie ahead. Embark on a journey of
+		self-discovery and empowerment as you delve into the captivating world of Tarot. Discover the
+		wisdom that lies within the cards and uncover the revelations they hold for you. Choose from our
+		selection of Tarot readings and unlock the secrets that await your exploration.
+	</p>
+</div>
 <div class="my-3 flex justify-center">
 	<div class="grid grid-cols-2 gap-6 lg:grid-cols-3">
 		{#each tarotReadings as reading, i}

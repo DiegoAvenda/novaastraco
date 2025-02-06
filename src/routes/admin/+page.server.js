@@ -2,7 +2,7 @@ import client from '$lib/server/db.js';
 import { redirect } from '@sveltejs/kit';
 
 export const load = async ({ locals }) => {
-	if (!locals.user.admin) {
+	if (!locals.user?.admin) {
 		return redirect(302, '/');
 	}
 

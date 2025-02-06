@@ -34,7 +34,7 @@
 	>
 		<h2>{frontPageImage.title}</h2>
 		<h3 class="text-2xl sm:text-3xl lg:text-4xl">{frontPageImage.subtitle}</h3>
-		<a href={frontPageImage.link} target="_blank"
+		<a href={frontPageImage.link}
 			><button class="mt-4 bg-white p-4 text-sm text-black">SEE MORE</button></a
 		>
 	</section>

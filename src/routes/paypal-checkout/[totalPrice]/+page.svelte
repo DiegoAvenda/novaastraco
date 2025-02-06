@@ -44,7 +44,7 @@
 					},
 					createOrder: function (data, actions) {
 						//https://developer.paypal.com/docs/api/orders/v2/#orders_create
-						return fetch('http://localhost:5173/api/paypal/create-order', {
+						return fetch('/api/paypal/create-order', {
 							method: 'post',
 							headers: { 'Content-Type': 'application/json; charset=utf-8' },
 							body: JSON.stringify({ intent: intent, items: cart, totalPrice: totalPrice })

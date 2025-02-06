@@ -32,7 +32,7 @@
 	}
 </script>
 
-<main class="mx-5 sm:mx-16 md:mx-24 lg:mx-32 xl:mx-48">
+<div class="mx-5 sm:mx-16 md:mx-24 lg:mx-32 xl:mx-48">
 	<div class="mb-6 items-center sm:flex sm:gap-10">
 		<div class="flex flex-col gap-4 sm:flex sm:w-2/4 sm:flex-row-reverse">
 			<img class="h-[28rem] object-contain" src={reading.image} alt={reading.name} />
@@ -55,11 +55,12 @@
 			{/if}
 		</div>
 	</div>
-	<div class="flex flex-col items-center">
-		<h3 class="text-xl font-bold">DETAILS</h3>
-		<p class="my-3">{@html rawReading.details}</p>
-	</div>
-</main>
+</div>
+
+<div class="m-8 flex flex-col items-center">
+	<h3 class="text-xl font-bold">DETAILS</h3>
+	<p class="max-w-[530px] text-center">{@html rawReading.details}</p>
+</div>
 
 {#if toastVisible}
 	<div class="fixed bottom-4 right-4 rounded-lg bg-black px-4 py-2 text-white shadow-lg">
