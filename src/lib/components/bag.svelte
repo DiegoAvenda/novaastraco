@@ -30,7 +30,7 @@
 		</ul>
 		<div class="flex justify-center">
 			<span class="text-info">Subtotal: ${totalPrice}</span>
-			<a href="/paypal-checkout/{totalPrice}"
+			<a href="/checkout/{totalPrice}"
 				><button class="mt-16 bg-black px-14 py-2 text-white">Checkout</button></a
 			>
 		</div>
