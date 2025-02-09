@@ -31,7 +31,9 @@
 	<div class="card bg-base-100 shadow-xl">
 		<div class="card-body items-center text-center">
 			<div class="card-actions">
-				<button onclick={() => checkout()}>Go to checkout</button>
+				<button class="mt-4 bg-white p-4 text-sm text-black" onclick={() => checkout()}
+					>Go to checkout</button
+				>
 			</div>
 			{#if toggleCheckout}
 				<span>Login first</span>

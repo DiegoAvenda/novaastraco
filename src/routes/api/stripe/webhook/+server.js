@@ -31,7 +31,7 @@ export async function POST({ request }) {
 			name: item.description || 'Unknown product',
 			quantity: item.quantity,
 			total: item.amount_total,
-			personalization: item.price.product.metadata.personalization // Ahora sí puedes acceder
+			personalization: item.price.product.metadata.personalization
 		}));
 
 		console.log('items:', items);

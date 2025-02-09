@@ -19,6 +19,7 @@
 							<div class="p-4">
 								<h2 class="text-lg font-medium text-black">{item.name}</h2>
 							</div>
+							<p>Personalization: {item.personalization}</p>
 						</div>
 					{/each}
 					<p>Ordered at {order.createdAt}</p>
