@@ -14,6 +14,12 @@
 	let toggle = $state(false);
 	let toggleBag = $state(false);
 
+	// Observar cambios en la URL y cerrar el sidebar
+	$effect(() => {
+		const currentPath = $page.url.pathname;
+		toggle = false; // Cerrar sidebar cuando cambia la ruta
+	});
+
 	const toggleButton = () => (toggle = !toggle);
 	const toggleButtonBag = () => (toggleBag = !toggleBag);
 
