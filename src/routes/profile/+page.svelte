@@ -2,7 +2,6 @@
 	import { enhance } from '$app/forms';
 
 	let { data } = $props();
-	// const username = data.username
 </script>
 
 <div class="m-6 flex flex-col items-center gap-4">

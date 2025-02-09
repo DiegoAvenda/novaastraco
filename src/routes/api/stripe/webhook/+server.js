@@ -52,8 +52,7 @@ export async function POST({ request }) {
 				items,
 				totalPrice,
 				createdAt: new Date(),
-				delivered: false,
-				prepared: false
+				delivered: false
 			});
 
 			notifUser(adminGoogleId, 'New sale');

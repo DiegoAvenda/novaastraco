@@ -6,14 +6,13 @@ export const load = async ({ locals }) => {
 		return redirect(302, '/login');
 	}
 
-	//const username = locals.user.name;
 	const customerId = locals.user.googleId;
 
 	try {
 		const mongoClient = await client.connect();
 		const db = mongoClient.db('chili');
 		const ordersCollection = db.collection('orders');
-		const query = { customerId, delivered: false, paymentCompleted: true };
+		const query = { customerId, delivered: false };
 		const options = {
 			sort: { createdAt: 1 }
 		};
@@ -35,7 +34,6 @@ export const load = async ({ locals }) => {
 
 		return {
 			orders
-			//username
 		};
 	} catch (e) {
 		console.log(e);
