@@ -23,10 +23,10 @@ export async function POST({ request }) {
 		const customerId = charge.metadata.customerId;
 
 		const lineItems = await stripe.checkout.sessions.listLineItems(sessionId);
-
+		console.log(lineItems);
 		const items = lineItems.data.map((item) => ({
 			name: item.description || 'Unknown product',
-			personalization: item.metadata.personalization,
+			personalization: item.metadata,
 			quantity: item.quantity,
 			total: item.amount_total
 		}));
