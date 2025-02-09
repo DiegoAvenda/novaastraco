@@ -21,16 +21,20 @@ export async function POST({ request }) {
 		const charge = event.data.object;
 		const sessionId = charge.id;
 		const customerId = charge.metadata.customerId;
-
-		const lineItems = await stripe.checkout.sessions.listLineItems(sessionId);
-		console.log(lineItems);
-		const items = lineItems.data.map((item) => ({
-			name: item.description || 'Unknown product',
-			personalization: item.metadata,
-			quantity: item.quantity,
-			total: item.amount_total
-		}));
 		const totalPrice = charge.amount_total;
+
+		const session = await stripe.checkout.sessions.retrieve(sessionId, {
+			expand: ['line_items.data.price.product']
+		});
+
+		const items = session.line_items.data.map((item) => ({
+			name: item.description || 'Unknown product',
+			quantity: item.quantity,
+			total: item.amount_total,
+			personalization: item.price.product.metadata.personalization // Ahora sí puedes acceder
+		}));
+
+		console.log('items:', items);
 
 		try {
 			const mongoClient = await client.connect();
