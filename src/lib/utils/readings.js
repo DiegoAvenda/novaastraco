@@ -1,7 +1,7 @@
 export const tarotReadings = [
 	{
 		name: 'FUTURE PARTNER',
-		price: 7.42,
+		price: 137,
 		image: '/images/tarot/partner.jpg',
 		slug: 'future-partner',
 		details:
@@ -9,7 +9,7 @@ export const tarotReadings = [
 	},
 	{
 		name: '1 YEAR AHEAD',
-		price: 19.12,
+		price: 139,
 		image: '/images/tarot/year.jpg',
 		slug: 'one-year',
 		details:
@@ -17,7 +17,7 @@ export const tarotReadings = [
 	},
 	{
 		name: '3 MONTHS AHEAD',
-		price: 13.68,
+		price: 133,
 		image: '/images/tarot/3months.jpg',
 		slug: 'three-months',
 		details:
@@ -25,7 +25,7 @@ export const tarotReadings = [
 	},
 	{
 		name: '6 MONTHS AHEAD',
-		price: 16.39,
+		price: 158,
 		image: '/images/tarot/6months.jpg',
 		slug: 'six-months',
 		details:
@@ -33,21 +33,21 @@ export const tarotReadings = [
 	},
 	{
 		name: 'YOUR ANGELS',
-		price: 8.99,
+		price: 138,
 		image: '/images/tarot/angels.jpg',
 		slug: 'your-angels',
 		details: '🤍This reading has 3 tarot cards, in addition to 2 oracle cards.'
 	},
 	{
 		name: 'YOUR DEITIES',
-		price: 8.99,
+		price: 198,
 		image: '/images/tarot/deities.jpg',
 		slug: 'your-deities',
 		details: '🤍This reading has 3 tarot cards, in addition to 2 oracle cards.'
 	},
 	{
 		name: 'WILL MY EX COME BACK?',
-		price: 9.99,
+		price: 139,
 		image: '/images/tarot/ex.jpg',
 		slug: 'will-my-ex-come-back',
 		details:
@@ -55,7 +55,7 @@ export const tarotReadings = [
 	},
 	{
 		name: 'FUTURE HUSBAND',
-		price: 6.68,
+		price: 136,
 		image: '/images/tarot/husband.jpg',
 		slug: 'future-husband',
 		details:
@@ -63,7 +63,7 @@ export const tarotReadings = [
 	},
 	{
 		name: 'WHEN WILL I CONCEIVE?',
-		price: 10.5,
+		price: 130,
 		image: '/images/tarot/pregnancy.jpg',
 		slug: 'pregnancy',
 		details:
@@ -71,7 +71,7 @@ export const tarotReadings = [
 	},
 	{
 		name: 'PAST LIFE',
-		price: 8.99,
+		price: 138,
 		image: '/images/tarot/pastLife.jpg',
 		slug: 'past-life',
 		details:
@@ -79,7 +79,7 @@ export const tarotReadings = [
 	},
 	{
 		name: 'BIRTH CHART',
-		price: 13.99,
+		price: 133,
 		image: '/images/birth-chart.avif',
 		slug: 'birth-chart',
 		details:
