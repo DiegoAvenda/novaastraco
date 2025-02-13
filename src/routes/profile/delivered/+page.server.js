@@ -22,14 +22,8 @@ export const load = async ({ locals }) => {
 		const orders = rawOrders.map((order) => ({
 			...order,
 			_id: order._id.toString(),
-			createdAt: order.createdAt.toLocaleTimeString('en-US', {
-				day: '2-digit',
-				month: '2-digit',
-				hour: '2-digit',
-				minute: '2-digit',
-				hour12: false
-			}),
 			deliveredAt: order.createdAt.toLocaleTimeString('en-US', {
+				year: '2-digit',
 				day: '2-digit',
 				month: '2-digit',
 				hour: '2-digit',

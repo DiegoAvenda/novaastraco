@@ -8,15 +8,15 @@
 
 <Post {title} {date} {image}>
 	<p class="mx-4 text-center">
-		Your Ascendant (Rising sign), Moon, and Sun** are the three core pillars of your birth chart,
-		each representing a different aspect of who you are. The Ascendant (Rising sign) is your outer
-		self, how you present yourself to the world, and the "mask" people see when they first meet you.
-		It shapes your approach to life, your instincts, and even your physical appearance. It’s like
-		the filter through which you experience the world and how others perceive you in return. The
-		**Moon sign** represents your inner world—your emotions, subconscious patterns, and what makes
-		you feel safe and nurtured. It’s how you react instinctively to situations and how you process
-		feelings. The Moon shows what you need to feel emotionally secure and comfortable. The Sun sign
-		is your core identity, ego, and life purpose. It’s the driving force behind your personality and
+		Your Ascendant (Rising sign), Moon, and Sun are the three core pillars of your birth chart, each
+		representing a different aspect of who you are. The Ascendant (Rising sign) is your outer self,
+		how you present yourself to the world, and the "mask" people see when they first meet you. It
+		shapes your approach to life, your instincts, and even your physical appearance. It’s like the
+		filter through which you experience the world and how others perceive you in return. The Moon
+		sign represents your inner world—your emotions, subconscious patterns, and what makes you feel
+		safe and nurtured. It’s how you react instinctively to situations and how you process feelings.
+		The Moon shows what you need to feel emotionally secure and comfortable. The Sun sign is your
+		core identity, ego, and life purpose. It’s the driving force behind your personality and
 		represents your vitality and sense of self. While the Moon governs emotions and the Ascendant
 		controls first impressions, the Sun is about who you are at your essence, especially as you grow
 		into your full potential. Together, these three signs form the foundation of your personality.

@@ -20,7 +20,7 @@
 								</div>
 							</div>
 						{/each}
-						<p>Delivered at {order.createdAt}</p>
+						<p>Delivered at {order.deliveredAt}</p>
 					</div>
 				</div>
 			</a>
