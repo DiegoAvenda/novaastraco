@@ -1,8 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import client from '$lib/server/db.js';
 import { notifUser } from '$lib/server/push-subscription';
-
-const adminGoogleId = '100935988500638449773';
+import { ADMIN_GOOGLE_ID } from '$env/static/private';
 
 export const load = async ({ locals }) => {
 	if (!locals.user) {
@@ -64,7 +63,7 @@ export const actions = {
 			};
 
 			await users.updateOne(filter, updateDoc);
-			notifUser(adminGoogleId, 'Tienes un nuevo mensaje');
+			notifUser(ADMIN_GOOGLE_ID, 'You have a new message');
 			return { success: true };
 		} catch (e) {
 			console.error(e);
