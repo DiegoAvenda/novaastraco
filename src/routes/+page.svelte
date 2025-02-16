@@ -2,7 +2,7 @@
 	const frontPageImages = [
 		{
 			title: 'TAROT + MAGIC',
-			subtitle: 'TAROT. DIVINATION & ASTROLOGY',
+			subtitle: 'TAROT & ASTROLOGY',
 			link: '/tarot',
 			backgroundImageUrl: '/images/tarot-hero.jpg'
 		},

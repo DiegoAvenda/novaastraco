@@ -14,10 +14,9 @@
 	let toggle = $state(false);
 	let toggleBag = $state(false);
 
-	// Observar cambios en la URL y cerrar el sidebar
 	$effect(() => {
 		const currentPath = $page.url.pathname;
-		toggle = false; // Cerrar sidebar cuando cambia la ruta
+		toggle = false;
 	});
 
 	const toggleButton = () => (toggle = !toggle);
@@ -81,7 +80,7 @@
 		>
 			<a href="/"
 				><h1 class="pointer-events-auto text-xl font-bold tracking-widest lg:text-4xl">
-					NOVAASTRACO
+					NOVASTRA
 				</h1></a
 			>
 		</div>
