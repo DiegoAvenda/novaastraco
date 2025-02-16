@@ -7,6 +7,7 @@ export const load = async ({ locals }) => {
 	}
 
 	const customerId = locals.user.googleId;
+	const username = locals.user.name;
 
 	try {
 		const mongoClient = await client.connect();
@@ -33,7 +34,8 @@ export const load = async ({ locals }) => {
 		}));
 
 		return {
-			orders
+			orders,
+			username
 		};
 	} catch (e) {
 		console.log(e);

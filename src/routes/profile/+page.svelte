@@ -4,6 +4,13 @@
 	let { data } = $props();
 </script>
 
+<div
+	class="flex min-h-[16.1875rem] flex-col items-center justify-center bg-black text-center text-white"
+>
+	<p>WELCOME</p>
+	<p class="text-2xl font-bold">{data.username.toUpperCase()}</p>
+</div>
+
 <div class="m-6 flex flex-col items-center gap-4">
 	<h1 class="flex justify-center text-3xl text-black">Pending orders</h1>
 
