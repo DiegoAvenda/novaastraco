@@ -29,10 +29,10 @@
 	</p>
 </div>
 <div class="my-3 flex justify-center">
-	<div class="grid grid-cols-2 gap-6 lg:grid-cols-3">
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 		{#each tarotReadings as reading, i}
 			<a href="/tarot/{i}">
-				<div class="flex w-44 flex-col items-center">
+				<div class="flex w-64 flex-col items-center">
 					<img class="mb-4" src={reading.image} alt={reading.title} />
 					<h3 class="font-bold">{reading.title}</h3>
 					<p class="font-bold">${reading.price}</p>
