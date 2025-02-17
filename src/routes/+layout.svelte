@@ -5,15 +5,13 @@
 	import { enhance } from '$app/forms';
 
 	let { data, children } = $props();
-
-	let isAdmin = $state(data.admin);
 </script>
 
 <svelte:head>
 	<title>NOVAASTRACO Official website: Tarot & Astrology</title>
 </svelte:head>
 
-{#if !isAdmin}
+{#if data.username && !data.admin}
 	<form method="post" action="/?/adminMode">
 		<button
 			class="absolute m-1 rounded bg-black px-3 py-1 text-xs text-gray-300 opacity-50 transition-all hover:bg-black hover:opacity-100"
@@ -26,7 +24,7 @@
 	<Navbar
 		customerLastMessageFrom={data.customerLastMessageFrom}
 		username={data.username}
-		admin={isAdmin}
+		admin={data.admin}
 	/>
 	<div class="grow">
 		{@render children()}
